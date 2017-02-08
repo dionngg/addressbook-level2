@@ -19,6 +19,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.io.File; 
 
 /**
  * Represents the file used to store address book data.
@@ -86,6 +87,17 @@ public class StorageFile {
         return filePath.toString().endsWith(".xml");
     }
 
+    /**
+     * check if user accidentally deletes the file
+     * @throws StorageOperationException if the file required is missing or deleted
+     */
+    public void checkIfStorageFileExist() throws StorageOperationException{
+    	File file = new File(getPath());
+    	if (!file.exists() && !file.isDirectory()) {
+    		throw new StorageOperationException("Storage File not found!");
+    	}
+    }
+    
     /**
      * Saves all data to this storage file.
      *
