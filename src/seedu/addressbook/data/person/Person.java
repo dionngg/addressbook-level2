@@ -69,7 +69,7 @@ public class Person implements ReadOnlyPerson, Printable {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ReadOnlyPerson // instanceof handles nulls
+                || (other instanceof ReadOnlyPerson // instance of handles nulls
                 && this.isSameStateAs((ReadOnlyPerson) other));
     }
 
@@ -83,7 +83,9 @@ public class Person implements ReadOnlyPerson, Printable {
     public String toString() {
         return getAsTextShowAll();
     }
-
+/**
+ *  returns a concatenated version of printable string
+ */
 	@Override
 	public String getPrintableString() {
 		return phone.getPrintableString()+ ", " + email.getPrintableString() + ", " + address.getPrintableString();
